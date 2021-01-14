@@ -14,7 +14,6 @@ public class gameJava {
 
         while (activo) {
 
-            int intentos = 0;
             int min = 0;
             int max = 100;
 
@@ -26,12 +25,11 @@ public class gameJava {
             do {
                 numeroJugador = escogerNumero();
                 mensaje(numeroJuego, numeroJugador);
-                intentos++;
             } while (numeroJuego != numeroJugador);
 
-            System.out.printf("¡Has ganado! %d", intentos);
+            System.out.println("¡Has ganado!");
 
-            activo = false;
+            activo = volverJugar();
 
         }
 
@@ -61,6 +59,18 @@ public class gameJava {
             System.out.println("Muy alto, adivina otra vez...");
         } else if (numeroJuego > numeroJugador) {
             System.out.println("Muy bajo, adivina otra vez...");
+        }
+    }
+
+    public boolean volverJugar() {
+        System.out.println("¿Quieres volver a jugar?\n1.Sí\n2.No");
+        int respuesta = entrada.nextInt();
+        if(respuesta == 1) {
+            System.out.println("¡Genial! vamos a jugar de nuevo...");
+            return true;
+        } else {
+            System.out.println("Fin del juego");
+            return false;
         }
     }
 
